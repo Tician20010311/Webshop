@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-l5*sjixt(#51!5s0h4@+6=ev5gy%j09@z)jl8$7-%37q+n=d(i
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'webshop_app.apps.WebshopAppConfig',
@@ -48,11 +48,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webshop.wsgi.application'
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static")
-MEDIA_ROOT =  os.path.join(os.path.dirname(BASE_DIR),"media")
-MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media' 
 
 DATABASES = {
     'default': {
@@ -76,7 +76,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'hu'
 
 TIME_ZONE = 'UTC'
 
