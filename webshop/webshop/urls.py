@@ -6,9 +6,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webshop_app.urls')),
-    path('product/', include('webshop_app.urls')),
-    path('gamer_pc/', include('webshop_app.urls')),
-    path('bejelentkezes/', include('webshop_app.urls')),
 ]
 
 if settings.DEBUG:

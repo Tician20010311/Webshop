@@ -16,7 +16,7 @@
                         <img src="{{ product.kep.url }}" alt="#">
                         <div class="badge bg-warning text-white position-absolute" style="top: 0.5rem; right:0.5rem">Akció</div>
                         <div class="button">
-                            <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Hozzáadás a kosárhoz</a>
+                            <a href="{% url 'product' product.id %}" class="btn"><i class="lni lni-cart"></i>Megtekintés</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -24,17 +24,9 @@
                         <h4 class="title">
                             <a href="product-grids.html">{{ product.nev }}</a>
                         </h4>
-                        <ul class="review">
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star"></i></li>
-                            <li><span>4.0 Review(s)</span></li>
-                        </ul>
                         <div class="price">
                             <strike>{{ product.ar }} Ft</strike>
-                            &nbsp;{{ product.akcios_ar }} Ft
+                           <span> &nbsp;{{ product.akcios_ar }} Ft </span>
                         </div>
                     </div>
                 </div>
@@ -47,7 +39,7 @@
                     <div class="product-image">
                         <img src="{{ product.kep.url }}" alt="#">
                         <div class="button">
-                            <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Hozzáadás a kosárhoz</a>
+                            <a href="{% url 'product' product.id %}" class="btn"><i class="lni lni-cart"></i>Megtekintés</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -55,14 +47,7 @@
                         <h4 class="title">
                             <a href="product-grids.html">{{ product.nev }}</a>
                         </h4>
-                        <ul class="review">
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star"></i></li>
-                            <li><span>4.0 Review(s)</span></li>
-                        </ul>
+
                         <div class="price">
                             <span>{{ product.ar }} Ft</span>
                         </div>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('bejelentkezes/',views.login_user, name='login'),
     path('kijelentkezes/',views.logout_user, name='logout'),
     path('regisztracio/',views.registrate_user, name='registration'),
+    path('termek/<int:pk>/',views.product, name='product'),
 ]

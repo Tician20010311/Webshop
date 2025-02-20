@@ -7,14 +7,14 @@
     <title>ShopGrids - Bootstrap 5 eCommerce HTML Template.</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.svg' %}" />
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../static/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="../static/css/tiny-slider.css" />
-    <link rel="stylesheet" href="../static/css/glightbox.min.css" />
-    <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/LineIcons.3.0.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tiny-slider.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/glightbox.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     
 
@@ -50,7 +50,7 @@
                   <div class="col-lg-4 col-md-4 col-12">
                       <div class="top-middle">
                           <ul class="useful-links">
-                              <li><a href="/">Kezdőlap</a></li>
+                              <li><a href="{% url 'home' %}">Kezdőlap</a></li>
                               <li><a href="/">Kapcsolat</a></li>
                           </ul>
                       </div>
@@ -64,14 +64,14 @@
                           <ul class="user-login">
                             {% if user.is_authenticated %}
                             <li>
-                                <a href="/kijelentkezes">Kijelentkezés</a>
+                                <a href="{% url 'logout' %}">Kijelentkezés</a>
                             </li>
                             {% else %}
                               <li>
-                                  <a href="/bejelentkezes">Bejelentkezés</a>
+                                  <a href="{% url 'login' %}">Bejelentkezés</a>
                               </li>
                               <li>
-                                <a href="/regisztracio">Regisztráció</a>
+                                <a href="{% url 'registration' %}">Regisztráció</a>
                             </li>
                               {% endif %}
                               
@@ -91,7 +91,7 @@
                   <div class="col-lg-3 col-md-3 col-7">
                       <!-- Start Header Logo -->
                       <a class="navbar-brand" href="/">
-                          <img src="../static/images/logo/logo.jpg" alt="Logo">
+                          <img src="{% static 'images/logo/logo.jpg' %}" alt="Logo">
                       </a>
                       <!-- End Header Logo -->
                   </div>
@@ -145,7 +145,7 @@
                                                       class="lni lni-close"></i></a>
                                               <div class="cart-img-head">
                                                   <a class="cart-img" href="product-details.html"><img
-                                                          src="../static/images/header/cart-items/item1.jpg" alt="#"></a>
+                                                          src="{% static 'images/header/cart-items/item1.jpg' %}" alt="#"></a>
                                               </div>
 
                                               <div class="content">
@@ -159,7 +159,7 @@
                                                       class="lni lni-close"></i></a>
                                               <div class="cart-img-head">
                                                   <a class="cart-img" href="product-details.html"><img
-                                                          src="../static/images/header/cart-items/item2.jpg" alt="#"></a>
+                                                          src="{% static 'images/header/cart-items/item2.jpg' %}" alt="#"></a>
                                               </div>
                                               <div class="content">
                                                   <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
@@ -261,6 +261,18 @@
       </div>
       <!-- End Header Bottom -->
   </header>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning d-flex align-items-center w-50 mx-auto m-2" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              {{ message }}
+            </div>
+          </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
     <footer class="footer">
@@ -272,7 +284,7 @@
                       <div class="col-lg-3 col-md-4 col-12">
                           <div class="footer-logo">
                               <a href="index.html">
-                                  <img class="rounded" src="../static/images/logo/logo.jpg" alt="#">
+                                  <img class="rounded" src="{% static '/images/logo/logo.jpg' %}" alt="#">
                               </a>
                           </div>
                       </div>
@@ -371,25 +383,22 @@
                   <div class="row align-items-center">
                       <div class="col-lg-4 col-12">
                           <div class="payment-gateway">
-                              <span>We Accept:</span>
-                              <img src="../static/images/footer/credit-cards-footer.png" alt="#">
+                              <span>Fizetési lehetőségek:</span>
+                              <img src="{% static 'images/footer/credit-cards-footer.png'%}" alt="#">
                           </div>
                       </div>
                       <div class="col-lg-4 col-12">
                           <div class="copyright">
-                              <p>Designed and Developed by<a href="https://graygrids.com/" rel="nofollow"
-                                      target="_blank">GrayGrids</a></p>
+                              <p>Feljlesztve a HardCorePC által</p>
                           </div>
                       </div>
                       <div class="col-lg-4 col-12">
                           <ul class="socila">
                               <li>
-                                  <span>Follow Us On:</span>
+                                  <span>Kövessen minket:</span>
                               </li>
                               <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                              <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
                               <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                              <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
                           </ul>
                       </div>
                   </div>
@@ -404,10 +413,10 @@
   </a>
 
   <!-- ========================= JS here ========================= -->
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/tiny-slider.js"></script>
-  <script src="../static/js/glightbox.min.js"></script>
-  <script src="../static/js/main.js"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/tiny-slider.js'%}"></script>
+  <script src="{% static 'js/glightbox.min.js'%}"></script>
+  <script src="{% static 'js/main.js'%}"></script>
   <script type="text/javascript">
       //========= Hero Slider 
       tns({
