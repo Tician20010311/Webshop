@@ -1,0 +1,7 @@
+
+{% autoescape off %}  
+Kedves {{ user.username }},  
+Kérjük hitelesítse email címét a következő linkre kattintva:,  
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}  
+Üdvözlettel NextGenTech .
+{% endautoescape %}  

@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l5*sjixt(#51!5s0h4@+6=ev5gy%j09@z)jl8$7-%37q+n=d(i'
 
@@ -81,10 +82,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'hu'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Budapest'
 
 USE_I18N = True
 
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'sales.nextgentech.company@gmail.com'  
+EMAIL_HOST_PASSWORD = 'lmfl zake huee qwxr'  
+EMAIL_PORT = 587  

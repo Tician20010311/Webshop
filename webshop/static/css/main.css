@@ -922,7 +922,7 @@ ol {
   font-weight: 600;
   position: relative;
   line-height: 28px;
-  text-transform: capitalize;
+  
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -964,7 +964,7 @@ ol {
   position: relative;
   padding-right: 14px;
   margin-right: 14px;
-  text-transform: capitalize;
+  
 }
 
 .breadcrumbs .breadcrumb-nav li:after {
@@ -1042,7 +1042,7 @@ top: -1px;
 .section-title h2 {
   font-size: 30px;
   line-height: 35px;
-  text-transform: capitalize;
+  
   position: relative;
   font-weight: 800;
   padding-bottom: 20px;
@@ -1261,7 +1261,7 @@ top: -1px;
 
 .button .btn {
   display: inline-block;
-  text-transform: capitalize;
+  
   font-size: 14px;
   font-weight: 600;
   padding: 13px 30px;
@@ -1816,7 +1816,7 @@ top: -1px;
 }
 
 .header .navbar-cart .cart-items .shopping-item .dropdown-cart-header span {
-  text-transform: capitalize;
+  
   color: #222;
   font-size: 14px;
   font-weight: 600;
@@ -1824,7 +1824,7 @@ top: -1px;
 
 .header .navbar-cart .cart-items .shopping-item .dropdown-cart-header a {
   float: right;
-  text-transform: capitalize;
+  
   color: #222;
   font-size: 14px;
   font-weight: 600;
@@ -1944,7 +1944,7 @@ top: -1px;
 }
 
 .header .navbar-cart .cart-items .shopping-item .bottom .total span {
-  text-transform: capitalize;
+  
   color: #222;
   font-size: 14px;
   font-weight: 600;
@@ -2413,7 +2413,7 @@ top: 2px;
 
 .header .mega-category-menu .sub-category li .inner-sub-category li a {
   color: #081828;
-  text-transform: capitalize;
+  
   font-size: 14px;
   position: relative;
   width: 100%;
@@ -2430,7 +2430,7 @@ top: 2px;
 
 .header .mega-category-menu .sub-category li a {
   color: #081828;
-  text-transform: capitalize;
+  
   font-size: 14px;
   position: relative;
   width: 100%;
@@ -2691,7 +2691,7 @@ top: 2px;
   font-weight: 600;
   transition: all 0.3s ease-out 0s;
   position: relative;
-  text-transform: capitalize;
+  
 }
 
 .navbar-nav .nav-item:hover .dd-menu::before {
@@ -2788,7 +2788,7 @@ top: 2px;
   width: 100%;
   font-size: 14px;
   font-weight: 500;
-  text-transform: capitalize;
+  
   position: relative;
   z-index: 1;
   border-radius: 4px;
