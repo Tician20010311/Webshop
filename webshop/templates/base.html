@@ -129,7 +129,7 @@
                           </div>
                           <div class="navbar-cart">
                               <div class="cart-items">
-                                  <a href="javascript:void(0)" class="main-btn">
+                                  <a href="{% url 'cart_summary'%}" class="main-btn">
                                       <i class="lni lni-cart"></i>
                                       <span class="total-items">2</span>
                                   </a>
@@ -139,34 +139,6 @@
                                           <span>Mennyiség : 2</span>
                                           <a href="cart.html">Kosaram</a>
                                       </div>
-                                      <ul class="shopping-list">
-                                          <li>
-                                              <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                                      class="lni lni-close"></i></a>
-                                              <div class="cart-img-head">
-                                                  <a class="cart-img" href="product-details.html"><img
-                                                          src="{% static 'images/header/cart-items/item1.jpg' %}" alt="#"></a>
-                                              </div>
-
-                                              <div class="content">
-                                                  <h4><a href="product-details.html">
-                                                          Apple Watch Series 6</a></h4>
-                                                  <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                              </div>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                                      class="lni lni-close"></i></a>
-                                              <div class="cart-img-head">
-                                                  <a class="cart-img" href="product-details.html"><img
-                                                          src="{% static 'images/header/cart-items/item2.jpg' %}" alt="#"></a>
-                                              </div>
-                                              <div class="content">
-                                                  <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
-                                                  <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                              </div>
-                                          </li>
-                                      </ul>
                                       <div class="bottom">
                                           <div class="total">
                                               <span>Összesen</span>
@@ -197,11 +169,11 @@
                           <ul class="sub-category">
                               <li><a href="/">Asztali számítógépek <i class="lni lni-chevron-right"></i></a>
                                   <ul class="inner-sub-category">
-                                      <li><a href="/">Otthoni / Irodai számítógépek</a></li>
-                                      <li><a href="/">Gamer PC</a></li>
-                                      <li><a href="/">Pro Gamer PC</a></li>
-                                      <li><a href="/">Extreme Gamer PC</a></li>
-                                      <li><a href="/">Összes PC</a></li>
+                                      <li><a href="{% url 'all-pc' %}">Összes PC</a></li>
+                                      <li><a href="{% url 'category' 'Office-Pc' %}">Otthoni / Irodai számítógépek</a></li>
+                                      <li><a href="{% url 'category' 'Gamer-Pc' %}">Gamer PC</a></li>
+                                      <li><a href="{% url 'category' 'Pro-Gamer-Pc' %}">Pro Gamer PC</a></li>
+                                      <li><a href="{% url 'category' 'Exterme-Gamer-Pc' %}">Extreme Gamer PC</a></li>
                                   </ul>
                               </li>
                               <li><a href="/">Perifériák</a></li>

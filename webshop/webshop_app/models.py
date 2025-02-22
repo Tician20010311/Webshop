@@ -8,18 +8,8 @@ class Kategoria(models.Model):
         return self.nev
     
     class Meta:
-        verbose_name_plural = "kategoriák"
-    
-class Vasarlo(models.Model):
-    vezeteknev = models.CharField(max_length=50)
-    keresztnev = models.CharField(max_length=50)
-    telefonszam = models.CharField(max_length=11)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=50)
+        verbose_name_plural = "kategoriak"
 
-    def __str__(self):
-        return f'{self.vezeteknev} {self.keresztnev}'
-    
 class Termek(models.Model):
     nev = models.CharField(max_length=100)
     ar = models.IntegerField(default=0, max_length=7)
@@ -33,6 +23,18 @@ class Termek(models.Model):
 
     def __str__(self):
         return self.nev
+    
+class Vasarlo(models.Model):
+    vezeteknev = models.CharField(max_length=50)
+    keresztnev = models.CharField(max_length=50)
+    telefonszam = models.CharField(max_length=11)
+    email = models.EmailField(max_length=100)
+    password = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.vezeteknev} {self.keresztnev}'
+    
+
 
 class Megrendeles(models.Model):
     termek = models.ForeignKey(Termek, on_delete=models.CASCADE)

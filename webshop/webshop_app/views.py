@@ -1,10 +1,7 @@
 from django.shortcuts import redirect, render
-from .models import Termek
+from .models import Termek , Kategoria
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
 from .forms import SignUpForm
 from django.contrib.sites.shortcuts import get_current_site  
 from django.utils.encoding import force_bytes, force_str
@@ -15,6 +12,15 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse  
 from django.contrib.auth import get_user_model
 
+def category(request, foo):
+    foo = foo.replace('-', ' ')
+    try:
+        kategoria = Kategoria.objects.get(nev = foo)
+        products = Termek.objects.filter(kategoria = kategoria)
+        return render(request, 'category.html', {'products': products , 'category': kategoria })
+    except:
+        messages.success(request, "A kategória nem létezik.")
+        return redirect('home')
 
 
 def home(request):
@@ -22,11 +28,11 @@ def home(request):
 
 def product(request,pk):
     product = Termek.objects.get(id=pk)
-    return render(request, "product_details.html",{'product':product})
+    return render(request, "product_details.html",{'product':product}) 
 
-def gamer_pc(request):
+def all_pc(request):
     products = Termek.objects.all()
-    return render(request, "gamer_pc.html", {'products': products})
+    return render(request, "all_pc.html", {'products': products})
 
 def login_user(request):
     if request.method == "POST":
@@ -91,3 +97,4 @@ def activate(request, uidb64, token):
         return redirect('login') 
     else:  
         return HttpResponse('Az aktivációs link érvénytelen!')  
+    
