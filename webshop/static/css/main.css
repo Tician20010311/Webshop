@@ -3182,7 +3182,7 @@ top: 2px;
     Shipping Info CSS
 ========================================*/
 .shipping-info {
-  background-color: #f9f9f9;
+  background-color: #09122C;
   padding: 50px 0;
 }
 
@@ -3406,7 +3406,7 @@ top: 2px;
 
 /* End Single Product */
 .trending-product {
-  background-color: #f9f9f9;
+  background-color: #09122C;
 }
 
 .trending-product .section-title {
@@ -3570,7 +3570,7 @@ top: 2px;
     Item Details CSS
 ========================================*/
 .item-details {
-  background-color: #f9f9f9;
+  background-color: #09122C;
 }
 
 .item-details .top-area {
