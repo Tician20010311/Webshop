@@ -98,3 +98,7 @@ def activate(request, uidb64, token):
     else:  
         return HttpResponse('Az aktivációs link érvénytelen!')  
     
+def category_summary(request):
+    categories = Kategoria.objects.all()
+    return render(request, 'category_summary.html', {"categories":categories})
+
