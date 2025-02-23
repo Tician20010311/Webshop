@@ -56,6 +56,7 @@
                       {% else %}
                       <div class="price">
                         &nbsp;{{ product.ar }} Ft 
+                      </br>&nbsp;ID : {{ product.id }}
                     </div>
                       {% endif %}
                       <p class="info-text">{{ product.leiras }}</p>
@@ -90,7 +91,7 @@
                           <div class="row align-items-end">
                               <div class="col-lg-4 col-md-4 col-12">
                                   <div class="button cart-button">
-                                      <button class="btn" style="width: 100%;">Hozzáadás a kosárhoz</button>
+                                      <button type="button" value="{{ product.id }}" id="add-cart" class="btn" style="width: 100%;">Hozzáadás a kosárhoz</button>
                                   </div>
                               </div>
                           </div>
@@ -200,4 +201,26 @@
       </div>
   </div>
 </div>
+<script>
+    $(document).on('click', '#add-cart', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart_add" %}',  
+            data: {
+                product_id: $('#add-cart').val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json){  
+                console.log(json);
+                document.getElementById("cart_quantity").textContent = json.qty
+            },
+            error: function(xhr, errmsg, err){
+                console.log("Hiba történt:", errmsg); // Hibakezelés hozzáadva
+            }
+        });
+    });
+</script>
+
 {% endblock %}
