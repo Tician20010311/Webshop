@@ -73,6 +73,7 @@
                             <option value="3">5</option>
                           </select>
                           <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart m-3">Frissítés</button>
+                          <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product m-3">Törlés</button>
                           <div style="width: 50px;">
                           </div>
                           <div style="width: 80px;">
@@ -105,13 +106,8 @@
   
                   <div style="background-color: #09122C" class="card text-white rounded-3">
                     <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Card details</h5>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                          class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                      </div>
   
-                      <p class="small mb-2">Card type</p>
+                      <p class="small mb-2">Kártya típusa</p>
                       <a href="#!" type="submit" class="text-white"><i
                           class="fab fa-cc-mastercard fa-2x me-2"></i></a>
                       <a href="#!" type="submit" class="text-white"><i
@@ -123,29 +119,29 @@
                       <form class="mt-4">
                         <div data-mdb-input-init class="form-outline form-white mb-4">
                           <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                            placeholder="Cardholder's Name" />
-                          <label class="form-label" for="typeName">Cardholder's Name</label>
+                            placeholder="Kártyatulajdonos neve" />
+                          <label class="form-label" for="typeName">Kártyatulajdonos neve</label>
                         </div>
   
                         <div data-mdb-input-init class="form-outline form-white mb-4">
                           <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
                             placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                          <label class="form-label" for="typeText">Card Number</label>
+                          <label class="form-label" for="typeText">Kártya szám</label>
                         </div>
   
                         <div class="row mb-4">
                           <div class="col-md-6">
                             <div data-mdb-input-init class="form-outline form-white">
                               <input type="text" id="typeExp" class="form-control form-control-lg"
-                                placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                              <label class="form-label" for="typeExp">Expiration</label>
+                                placeholder="HH/ÉÉÉÉ" size="7" id="exp" minlength="7" maxlength="7" />
+                              <label class="form-label" for="typeExp">Lejárat</label>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div data-mdb-input-init class="form-outline form-white">
                               <input type="password" id="typeText" class="form-control form-control-lg"
                                 placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                              <label class="form-label" for="typeText">Cvv</label>
+                              <label class="form-label" for="typeText">CVV</label>
                             </div>
                           </div>
                         </div>
@@ -155,24 +151,23 @@
                       <hr class="my-4">
   
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$4798.00</p>
+                        <p class="mb-2">Részösszeg</p>
+                        <p class="mb-2">Ft</p>
                       </div>
   
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Shipping</p>
-                        <p class="mb-2">$20.00</p>
+                        <p class="mb-2">Szállítás</p>
+                        <p class="mb-2">Ft</p>
                       </div>
   
                       <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">$4818.00</p>
+                        <p class="mb-2">Összesen</p>
+                        <p class="mb-2">{{ totals }}Ft</p>
                       </div>
   
                       <button style="background-color: #FF6500; color: #fff; border:none; " type="button" data-mdb-button-init data-mdb-ripple-init class="update-cart btn btn-info btn-block btn-lg">
                         <div class="d-flex justify-content-between">
-                          <span>$4818.00</span>
-                          <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                          <span>Fizetés <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
                       </button>
   
@@ -191,6 +186,7 @@
   </section>
   
   <script>
+    //Kosár frissítése
     $(document).on('click', '.update-cart', function(e){
       e.preventDefault();
       // grab the product id
@@ -219,6 +215,36 @@
       });
   
   })
+
+  //Termék törlése
+  $(document).on('click', '.delete-product', function(e){
+    e.preventDefault();
+    // grab the product id
+    //var productid = $(this).data('index');
+
+    $.ajax({
+    type: 'POST',
+    url: '{% url 'cart_delete' %}',
+    data: {
+      product_id: $(this).data('index'),
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      action: 'post'
+    },
+    success: function(json){
+        //console.log(json)
+        //document.getElementById("cart_quantity").textContent = json.qty
+        location.reload();
+    },
+
+    error: function(xhr, errmsg, err){
+
+    }
+
+
+    });
+
+})
+
   
   </script>
 

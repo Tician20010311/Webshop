@@ -47,3 +47,29 @@ class Cart():
         self.session.modified = True
         thing = self.cart
         return thing
+    
+    def delete(self, product):
+        product_id = str(product)
+		# Delete from dictionary/cart
+        if product_id in self.cart:
+            del self.cart[product_id]
+
+        self.session.modified = True
+    
+    def cart_total(self):
+        product_ids = self.cart.keys()
+        products = Termek.objects.filter(id__in=product_ids)
+        quantities = self.cart
+        total = 0
+        for key,value in quantities.items():
+            key = int(key)
+            for product in products:
+                if product.id == key:
+                    if product.akcios_ar:
+                        total = total+(product.akcios_ar * value)
+                    else:
+                        total = total+(product.ar * value)
+
+
+
+        return total
