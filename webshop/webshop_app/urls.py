@@ -11,8 +11,12 @@ urlpatterns = [
     path('bejelentkezes/',views.login_user, name='login'),
     path('kijelentkezes/',views.logout_user, name='logout'),
     path('regisztracio/',views.registrate_user, name='registration'),
+    path('felhasznalo_frissites/',views.update_user, name='update_user'),
+    path('jelszo_frissites/',views.update_password, name='update_password'),
+    path('info_frissites/',views.update_info, name='update_info'),
     path('termek/<int:pk>/',views.product, name='product'),
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',  activate, name='activate'),  
     path('kategoria/<str:foo>/',views.category, name='category'),
     path('kategoria_summary/',views.category_summary, name='category_summary'),
+    path('kereses/',views.search, name='search'),
 ]

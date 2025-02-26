@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Kedzőlap{% endblock %}
 
 
@@ -49,13 +50,13 @@
                       {% if product.akcios %}
 
                       <div class="price">
-                        <strike>{{ product.ar }} Ft</strike>
-                        &nbsp;{{ product.akcios_ar }} Ft 
+                        <strike>{{ product.ar | intcomma }} Ft</strike>
+                        &nbsp;{{ product.akcios_ar | intcomma }} Ft 
                     </div>
 
                       {% else %}
                       <div class="price">
-                        &nbsp;{{ product.ar }} Ft 
+                        &nbsp;{{ product.ar | intcomma }} Ft 
                       </br>&nbsp;ID : {{ product.id }}
                     </div>
                       {% endif %}

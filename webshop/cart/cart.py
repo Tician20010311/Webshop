@@ -69,7 +69,4 @@ class Cart():
                         total = total+(product.akcios_ar * value)
                     else:
                         total = total+(product.ar * value)
-
-
-
         return total

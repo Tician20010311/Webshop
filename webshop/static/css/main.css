@@ -1447,58 +1447,51 @@ top: -1px;
   }
 }
 
-.header .topbar .top-left .menu-top-link .select-position {
-  position: relative;
-}
-
-.header .topbar .top-left .menu-top-link .select-position select {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: relative;
-  border: none;
-  padding: 0 10px 0 0px;
-  color: #fff !important;
+.header .topbar .top-left .user {
+  color: #fff;
+  display: inline-block;
+  margin-right: 5px;
   font-weight: 500;
   font-size: 14px;
-  background-color: #09122C !important;
 }
 
-.header .topbar .top-left .menu-top-link .select-position select:focus {
-  text-decoration: none;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.header .topbar .top-left .menu-top-link .select-position::after {
-  border-bottom: 2px solid #fff;
-  border-right: 2px solid #fff;
-  content: '';
-  display: block;
-  height: 6px;
-  margin-top: -3px;
-  pointer-events: none;
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  -webkit-transform-origin: 66% 66%;
-  transform-origin: 66% 66%;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -webkit-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  width: 6px;
-}
-
-.header .topbar .top-left .menu-top-link li {
+.header .topbar .top-left .user i {
+  color: #fff;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
-.header .topbar .top-left .menu-top-link li:last-child {
-  margin: 0;
+.header .topbar .top-left .user-login {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.header .topbar .top-left .user-login li {
+  display: inline-block;
+  border-right: 1px solid rgba(255, 255, 255, 0.459);
+  padding: 0px 10px;
+  white-space: nowrap;
+}
+
+.header .topbar .top-left .user-login li:first-child {
+  padding-right: 12px;
+}
+
+.header .topbar .top-left .user-login li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
+}
+
+.header .topbar .top-left .user-login li a {
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.header .topbar .top-left .user-login li a:hover {
+  color: #FF6500;
 }
 
 .header .topbar .top-middle {
@@ -2038,6 +2031,7 @@ top: -1px;
 }
 
 .header .main-menu-search .search-input input {
+  border-radius: 4px 0 0 4px;
   width: 100%;
   height: 45px;
   border: 1px solid #e2e2e2;
@@ -2190,7 +2184,7 @@ top: -1px;
 
 @media (max-width: 767px) {
   .header .mobile-menu-btn .toggler-icon {
-    background-color: #09122C;
+    background-color: #fff;
   }
 
   .header .button {
@@ -2346,7 +2340,7 @@ top: -1px;
 
 .header .mega-category-menu .cat-button {
   display: inline-block;
-  color: #09122C;
+  color: white;
   font-size: 15px;
   font-weight: 600;
 }
@@ -2683,7 +2677,7 @@ top: 2px;
 
 .navbar-nav .nav-item a {
   font-size: 14px;
-  color: #09122C;
+  color: white;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
   position: relative;
@@ -2867,8 +2861,7 @@ top: 2px;
 ========================================*/
 .hero-area {
   position: relative;
-  background-color: #fff;
-  margin-top: 12px;
+  background-color: #09122C;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

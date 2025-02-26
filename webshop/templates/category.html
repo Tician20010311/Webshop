@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Kedzőlap{% endblock %}
 
 
@@ -43,8 +44,8 @@
                             <a href="product-grids.html">{{ product.nev }}</a>
                         </h4>
                         <div class="price">
-                            <strike>{{ product.ar }} Ft</strike>
-                           <span> &nbsp;{{ product.akcios_ar }} Ft </span>
+                            <strike>{{ product.ar| intcomma   }} Ft</strike>
+                           <span> &nbsp;{{ product.akcios_ar| intcomma   }} Ft </span>
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         </h4>
 
                         <div class="price">
-                            <span>{{ product.ar }} Ft</span>
+                            <span>{{ product.ar | intcomma  }} Ft</span>
                         </div>
                     </div>
                 </div>

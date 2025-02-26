@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Kedzőlap{% endblock %}
 
 
@@ -43,6 +44,7 @@
                   </div>
                 {% if cart_products %}
                   {% for product in cart_products %}
+                    {% if product.akcios_ar  %}
                   <div class="rounded card mb-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
@@ -54,7 +56,7 @@
                           </div>
                           <div class="ms-3">
                             <h5>{{ product.nev }}</h5>
-                            <p class="small mb-0">256GB, Navy Blue</p>
+                            <p class="small mb-0">{{ product.leiras }}</p>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
@@ -77,7 +79,7 @@
                           <div style="width: 50px;">
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-0">{{ product.ar }}</h5>
+                            <h5 class="mb-0">{{ product.akcios_ar | intcomma }}</h5>
                           </div>
                           <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                         </div>
@@ -86,6 +88,53 @@
 
                     </div>
                   </div>
+                  {% else %}
+                  <div class="rounded card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img
+                              src="{{ product.kep.url }}"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          </div>
+                          <div class="ms-3">
+                            <h5>{{ product.nev }}</h5>
+                            <p class="small mb-0">{{ product.leiras }}</p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          
+
+                          <select id="select{{product.id}}" class="form-select" aria-label="Default select example">
+                            {% for key,value in quantities.items %}
+                            {% if key == product.id|slugify%}
+                            <option selected>{{ value  }}</option>
+                            {% endif %}
+                            {% endfor %}
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="3">4</option>
+                            <option value="3">5</option>
+                          </select>
+                          <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart m-3">Frissítés</button>
+                          <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product m-3">Törlés</button>
+                          <div style="width: 50px;">
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0">{{ product.ar | intcomma }}</h5>
+                          </div>
+                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  
+
+                  {% endif %}
                   {% endfor %}
                   
                   {% else %}
@@ -162,7 +211,7 @@
   
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Összesen</p>
-                        <p class="mb-2">{{ totals }}Ft</p>
+                        <p class="mb-2">{{ totals | intcomma }} Ft</p>
                       </div>
   
                       <button style="background-color: #FF6500; color: #fff; border:none; " type="button" data-mdb-button-init data-mdb-ripple-init class="update-cart btn btn-info btn-block btn-lg">
@@ -188,33 +237,33 @@
   <script>
     //Kosár frissítése
     $(document).on('click', '.update-cart', function(e){
-      e.preventDefault();
-      // grab the product id
-      var productid = $(this).data('index');
-  
-      $.ajax({
-      type: 'POST',
-      url: '{% url 'cart_update' %}',
-      data: {
-        product_id: $(this).data('index'),
-        product_qty: $('#select' + productid + ' option:selected').text(),
-        csrfmiddlewaretoken: '{{ csrf_token }}',
-        action: 'post'
-      },
-      success: function(json){
-          //console.log(json)
-          //document.getElementById("cart_quantity").textContent = json.qty
-          location.reload();
-      },
-  
-      error: function(xhr, errmsg, err){
-  
-      }
-  
-  
-      });
-  
-  })
+    e.preventDefault();
+    // grab the product id
+    var productid = $(this).data('index');
+
+    $.ajax({
+    type: 'POST',
+    url: "{% url 'cart_update' %}",
+    data: {
+      product_id: $(this).data('index'),
+      product_qty: $('#select' + productid + ' option:selected').text(),
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      action: 'post'
+    },
+    success: function(json){
+        //console.log(json)
+        //document.getElementById("cart_quantity").textContent = json.qty
+        location.reload();
+    },
+
+    error: function(xhr, errmsg, err){
+
+    }
+
+
+    });
+
+})
 
   //Termék törlése
   $(document).on('click', '.delete-product', function(e){
@@ -224,7 +273,7 @@
 
     $.ajax({
     type: 'POST',
-    url: '{% url 'cart_delete' %}',
+    url: "{% url 'cart_delete' %}",
     data: {
       product_id: $(this).data('index'),
       csrfmiddlewaretoken: '{{ csrf_token }}',
