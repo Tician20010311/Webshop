@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from .models import Termek , Kategoria , Profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm , UpdateUserForm , ChangePasswordForm , UserInfoForm
+from .forms import SignUpForm , UpdateUserForm , ChangePasswordForm , UserInfoForm , SearchForm
 from django.contrib.sites.shortcuts import get_current_site  
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
@@ -12,7 +12,21 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse  
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+import json
+from cart.cart import Cart
 
+
+
+def search(request):
+    form = SearchForm(request.GET or None)
+    results = []
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        if query:
+            results = Termek.objects.filter(nev__icontains=query)
+
+    return render(request, 'search_results.html', {'results': results, 'form': form})
 
 
 
@@ -121,6 +135,15 @@ def login_user(request):
         
         if user is not None:
             login(request, user)
+            current_user = Profile.objects.get(felhasznalo__id=request.user.id)
+            saved_cart = current_user.regikosar
+            if saved_cart:
+                converted_cart = json.loads(saved_cart)
+                cart = Cart(request)
+                for key, value in converted_cart.items():
+                     cart.db_add(product=key, quantity=value)
+
+ 
             messages.success(request, "Sikeres bejelentkezés! Kérjük adja meg a hiányzó adatokat!")
             return redirect('update_info')
         else:
@@ -190,7 +213,7 @@ def activate(request, uidb64, token):
 
 
 
-def category_summary(request):
-    categories = Kategoria.objects.all()
-    return render(request, 'category_summary.html', {"categories":categories})
+def all_products(request):
+    products = Termek.objects.all()
+    return render(request, 'all_products.html', {"products":products})
 

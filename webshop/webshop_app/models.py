@@ -12,6 +12,8 @@ class Profile(models.Model):
     iranyitoszam = models.CharField(max_length=4, blank=True)
     varos = models.CharField(max_length=50, blank=True)
     megye = models.CharField(max_length=50, blank=True)
+    regikosar = models.CharField(max_length=50, blank=True, null=True)
+
 
     def __str__(self):
         return self.felhasznalo.username
@@ -35,14 +37,14 @@ class Kategoria(models.Model):
 
 class Termek(models.Model):
     nev = models.CharField(max_length=100)
-    ar = models.IntegerField(default=0, max_length=7)
+    ar = models.IntegerField(default=0)
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE, default=1)
     leiras = models.TextField(max_length=7000, default='', blank=True , null=True)
     kep = models.ImageField(upload_to='images', blank=True)
 
     #Leárazott dolgok
     akcios = models.BooleanField(default=False)
-    akcios_ar = models.IntegerField(default=0, max_length=7)
+    akcios_ar = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nev

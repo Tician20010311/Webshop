@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm , UserChangeForm , SetPas
 from django import forms
 from .models import Profile
 
+class SearchForm(forms.Form):
+    query = forms.CharField(max_length=100, required=False, label="Keresés")
+
 class UserInfoForm(forms.ModelForm):
     telefon = forms.CharField(label="",widget=forms.TextInput(attrs={'class': 'form-control border-0 border-bottom rounded-0','placeholder': 'Telefonszám'}),required=False)
     cim1 = forms.CharField(label="",widget=forms.TextInput(attrs={'class': 'form-control border-0 border-bottom rounded-0','placeholder': 'Cím 1'}),required=False)

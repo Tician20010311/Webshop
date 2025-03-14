@@ -99,13 +99,13 @@
                   </div>
                   <div class="col-lg-5 col-md-7 d-xs-none">
                       <!-- Start Main Menu Search -->
-                       <form method="POST" action="{% url 'search' %}">
+                       <form method="GET" action="{% url 'search' %}">
                         {% csrf_token %}    
                       <div class="main-menu-search">
                           <!-- navbar search start -->
                           <div class="navbar-search search-style-5">
                               <div class="search-input">
-                                  <input class="rounded form-control" type="text" placeholder="Keresés" name="searched">
+                                  <input class="rounded form-control" type="text" name="query" placeholder="Keresés..." value="{{ request.GET.query }}">
                               </div>
                               <div class="search-btn">
                                   <button type="submit"><i class="lni lni-search-alt"></i></button>
@@ -167,7 +167,7 @@
                           <ul class="sub-category">
                               <li><a href="/">Asztali számítógépek <i class="lni lni-chevron-right"></i></a>
                                   <ul class="inner-sub-category">
-                                      <li><a href="{% url 'category_summary' %}">Összes PC</a></li>
+                                      <li><a href="{% url 'all_products' %}">Összes PC</a></li>
                                       <li><a href="{% url 'category' 'Office-Pc' %}">Otthoni / Irodai számítógépek</a></li>
                                       <li><a href="{% url 'category' 'Gamer-Pc' %}">Gamer PC</a></li>
                                       <li><a href="{% url 'category' 'Pro-Gamer-Pc' %}">Pro Gamer PC</a></li>
