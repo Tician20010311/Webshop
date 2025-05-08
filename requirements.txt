@@ -1,0 +1,13 @@
+Django
+markdown
+django-filter
+django-admin-interface
+django-allauth
+django-extensions
+django-import-export
+six
+requests
+jwt
+django-allauth[socialaccount]
+social-auth-core
+psycopg
