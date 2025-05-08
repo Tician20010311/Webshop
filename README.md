@@ -10,20 +10,7 @@ Automated Scripts: Includes shell scripts for starting, stopping, and managing s
 
 Configuration Management: Centralized configuration files for easy management and updates.
 
-🧱 Project Structure
-bash
-Másolás
-Szerkesztés
-Webshop/
-├── api/                  # Backend API services
-├── conf/                 # Configuration files
-├── Dockerfile            # Docker image definition
-├── docker-compose.yaml   # Docker Compose configuration
-├── requirements.txt      # Python dependencies
-├── shell.sh              # Shell utility script
-├── start.sh              # Script to start services
-├── stop.sh               # Script to stop services
-└── README.md             # Project documentation
+<pre> ## 🧱 Project Structure ``` Webshop/ ├── api/ # Backend API services ├── conf/ # Configuration files ├── Dockerfile # Docker image definition ├── docker-compose.yaml # Docker Compose configuration ├── requirements.txt # Python dependencies ├── shell.sh # Shell utility script ├── start.sh # Script to start services ├── stop.sh # Script to stop services └── README.md # Project documentation ``` </pre>
 ⚙️ Getting Started
 Prerequisites
 Docker installed on your machine.
