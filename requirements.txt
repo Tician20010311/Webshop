@@ -11,3 +11,5 @@ pyjwt
 django-allauth[socialaccount]
 social-auth-core
 psycopg
+django-filter
+stripe
